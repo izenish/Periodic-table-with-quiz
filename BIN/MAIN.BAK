@@ -1,0 +1,8 @@
+#include<stdio.h>
+#include<conio.h>
+#include<malloc.h>
+struct node
+{int info;
+struct node *pnode;
+};
+struct node *pfirst=NULL,*pnext,

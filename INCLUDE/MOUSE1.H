@@ -1,0 +1,24 @@
+union REGS i,o;
+void mouse()  //mouse address
+{
+    i.x.ax=0;
+    int86(51,&i,&o);
+}
+void getpointer() //mouse pointer
+{
+    i.x.ax=1;
+    int86(51,&i,&o);
+}
+void coo(int *b,int *x,int *y) //mouse bottom
+{
+    i.x.ax=3;
+    int86(0x33,&i,&o);
+    *b=o.x.bx;
+    *x=o.x.cx;
+    *y=o.x.dx;
+}
+void hidemouse()
+{
+i.x.ax=2;
+int86(0x33,&i,&o);
+}

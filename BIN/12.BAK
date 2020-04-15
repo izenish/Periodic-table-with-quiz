@@ -1,0 +1,9 @@
+#include<iostream.h>
+#include<stdio.h>
+#include<graphics.h>
+#include<dos.h>
+#include<conio.h>
+#include<stdlib.h>
+FILE *fp;
+char ch;
+  int b,c,d;

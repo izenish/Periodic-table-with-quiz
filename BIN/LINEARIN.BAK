@@ -1,0 +1,55 @@
+//linear interpolation lab4
+
+#include<iostream.h>
+#include<conio.h>
+#include<math.h>
+
+void main()
+{
+clrscr();
+
+float a[20],b[20],x,x0,x1,y0,y1,y;
+int n,i,j;
+
+cout<<"Enter the number of terms\n";
+cin>>n;
+
+cout<<"Enter the x values\n";
+for(i=0;i<n;i++)
+{
+cin>>a[i];
+}
+cout<<"Enter the fx values\n";
+for(i=0;i<n;i++)
+{
+cin>>b[i];
+}
+cout<<"Enter the interpolated value\n";
+cin>>x;
+
+for(i=0;i<n;i++){
+if(x>a[i]&&x<a[i+1]){
+x0=a[i];
+x1=a[i+1];
+y0=b[i];
+y1=b[i+1];
+}
+}
+cout<<"Emtered values are \n";
+cout<<"x\t";
+for(i=0;i<n;i++)
+cout<<a[i]<<"\t";
+cout<<endl;
+cout<<"y\t";
+for(i=0;i<n;i++)
+cout<<b[i]<<"\t";
+cout<<endl;
+
+y=y0+(x-x0)*((y1-y0)/(x1-x0));
+
+cout<<"The interpolation result is " <<y;
+
+
+getch();
+
+}

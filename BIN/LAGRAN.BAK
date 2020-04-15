@@ -1,0 +1,60 @@
+//langrange interpolation lab 4.2
+
+#include<iostream.h>
+#include<conio.h>
+#include<math.h>
+
+void main()
+{
+clrscr();
+int n,i,j;
+float a[20],b[20],p,x,yp;
+
+cout<<"Enter the number of terms\n";
+cin>>n;
+
+cout<<"Enter the x values\n";
+for(i=0;i<n;i++)
+{
+cin>>a[i];
+}
+cout<<"Enter the fx values\n";
+for(i=0;i<n;i++)
+{
+cin>>b[i];
+}
+cout<<"Enter the interpolation value\n";
+cin>>x;
+
+cout<<"The entered table is \n";
+cout<<"x\t";
+for(i=0;i<n;i++)
+{
+cout<<a[i]<<"\t";
+}
+cout<<endl;
+cout<<"fx\t";
+for(i=0;i<n;i++)
+{
+cout<<b[i]<<"\t";
+}
+cout<<endl;
+
+for(i=0;i<n;i++)
+{
+p=1.0;
+for(j=0;j<n;j++)
+{
+if(i!=j)
+{
+ p=p*((x-a[j])/(a[i]-a[j]));
+}
+yp=yp+ p*b[i];
+}
+}
+
+cout<<"The interpolated value is "<<yp;
+
+
+getch();
+}

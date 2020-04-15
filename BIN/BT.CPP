@@ -1,0 +1,94 @@
+#include<stdio.h>
+#include<conio.h>
+#include<alloc.h>
+struct node
+{
+ int info;
+ struct node *lchild;
+ struct node *rchild;
+};
+struct node *root=NULL,*pthis,*ppthis,*pnew;
+void create()
+{int data;
+ pnew=(struct node*)malloc(sizeof(struct node));
+ printf("enter the data");
+ scanf("%d",&data);
+ pnew->info=data;
+ pnew->lchild=NULL;
+ pnew->rchild=NULL;
+}
+void inorder(struct node *p)
+{
+ if(p!=NULL)
+  {inorder(p->lchild);
+  printf("%d",p->info);
+  inorder(p->rchild);
+  }
+ }
+ void preorder(struct node *p)
+ {if(p!=NULL)
+ {printf("%d",p->info);
+ preorder(p->lchild);
+ preorder(p->rchild);
+ }
+}
+void postorder(struct node *p)
+{if(p!=NULL)
+ {postorder(p->lchild);
+ postorder(p->rchild);
+ printf("%d",p->info);
+ }
+}
+void main()
+{clrscr();
+int choice;
+char ch;
+create();
+if(root==NULL)
+{root=pnew;
+}
+else
+{pthis=root;
+while(pthis!=NULL)
+{ppthis=pthis;
+if(pnew->info<pthis->info)
+{pthis=pthis->lchild;
+if(pthis==NULL)
+{ppthis->lchild=pnew;
+}
+}
+else
+{pthis=pthis->rchild;
+if(pthis!=NULL)
+{ppthis->rchild=pnew;
+}
+}
+}
+
+printf("\nDo you want to continue (y/n)?");
+scanf("%c",&ch);
+}
+while(ch!='n');
+printf("\n1.inorder \n2.preorder \n3.postorder");
+ printf("enter the choice");
+ scanf("%c",&choice);
+ switch(choice)
+ {case 1:
+ printf("\ninorder:");
+ inorder(root);
+ break;
+ case 2:
+ printf("\npreorder");
+ preorder(root);
+ break;
+ case 3:
+ printf("\npostorder");
+ postorder(root);
+ break;
+ default:
+ printf("\nInvalid");
+ break;
+ }
+
+ getch();
+ }

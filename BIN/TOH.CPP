@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<conio.h>
+void TOH(int,char,char,char);
+void main()
+{clrscr();
+int n;
+printf("\n enter the no. of disks");
+scanf("%d",&n);
+TOH(n,'X','Z','Y');
+getch();
+}
+void TOH(int n,char X,char Z,char Y)
+{if(n>0)
+{TOH(n-1,X,Y,Z);
+printf("move the disc from %c to %c\n",X,Y);
+TOH(n-1,Z,X,Y);
+}
+
+}

@@ -1,0 +1,200 @@
+#include<iostream.h>
+#include<string.h>
+using namespace std;
+int Guess;
+int Total;
+class Question
+{
+private:
+string Question_Text;
+string Answer_1;
+string Answer_2;
+string Answer_3;
+string Answer_4;
+int Correct_Answer;
+int Question_Score;
+public:
+void setValues (string, string, string,string,string,int,int);
+void askQuestion ();
+};
+int main()
+{
+cout<<endl;
+cout<<"******************************"<<endl;
+cout<<"        WELCOME TO QUIZ       "<<endl;
+cout<<"------------------------------"<<endl;
+cout<<"******************************"<<endl;
+cout<<endl;
+cout<<"press enter to start the quiz"<<endl;
+cin.get();
+string Respond;
+cout<<"Are you ready for the quiz"<<"Yes/No"<<endl;
+cin<<Respond;
+if(Respond=="Yes")
+{
+cout<<endl;
+cout<<"Ok,Goodluck!"<<endl;
+cout<<endl;
+}
+else
+{cout<<"Ok,Goodbye!"<<endl;
+return 0;}
+Question q1;
+Question q2;
+Question q3;
+Question q4;
+Question q5;
+Question q6;
+Question q7;
+Question q8;
+Question q9;
+Question q10;
+
+q1.setValues(" The rows of the periodic table are called;",
+	   " classes",
+	    "periods",
+	    "groups",
+	    "families",
+	    2,
+	    10);
+
+q2.setValues("Who was the scientist credited with devising the first periodic table similar to the one we use today",
+	     "John Dalton",
+	     "Gregor Mendel",
+	     "Dmitri Mendeleev",
+	     "Ernest Rutherford",
+	     3,
+	     10);
+q3.setValues("The primary difference between the modern periodic table and Mendeleev's periodic table is",
+"The two tables are the same except we know about more elements now.",
+"Mendeleev's table did not arrange the elements according to recurring trends in their properties.",
+"The elements in the modern table are arranged in order of increasing atomic weight.",
+"The elements in the modern table are arranged in order of increasing atomic number.",
+4,
+10);
+
+q4.setValues("As you move from left to right across the periodic table",
+"atomic radius decreases",
+"atomic radius increases",
+"ionization energy decreases",
+"electronegativity decreases",
+1,
+10);
+
+q5.setValues("As you move from top to bottom down the periodic table",
+"a change in atomic radius cannot be predicted",
+"atomic radius decreases",
+"electronegativity decreases",
+"ionization energy increases",
+3,
+10);
+
+q6.setValues("Which of the following are all properties of nonmetals",
+"usually donate electrons easily, typically brittle in the solid form, poor conductors of heat",
+"usually gain electrons easily, poor conductors of heat, poor conductors of electricity",
+"usually gain electrons easily, good conductors of heat and electricity",
+"usually donate electrons easily, metallic luster, good conductors of heat",
+2,
+10);
+
+q7.setValues("Which of the following element groups are considered types of metals",
+"basic metals only",
+"basic metals, transition elements, halogens",
+"transition elements, basic metals, alkali metals, alkaline earths, halogens",
+"transition elements, basic metals, rare earths, alkali metals, alkaline earths",
+4,
+10);
+
+q8.setValues("Where would you find the smallest atoms of elements in the periodic table",
+"top and lefthand side",
+"top and righthand side",
+"bottom and lefthand side",
+"bottom and righthand side",
+2,
+10);
+
+q9.setValues("Electron affinity reflects the ability of an atom to accept an electron. Which is true of the alkaline earths",
+"No generalization can be made about electron affinity for this element group.",
+"The alkakine earths have low electron affinity values.",
+"The alkaline earths have high electron affinity values.",
+"None of the above",
+2,
+10);
+
+q10.setValues("With respect to electron affinity, which statement applies to the halogens",
+"The halogens have low electron affinity values.",
+"The halogens have high electron affinity values.",
+"No generalization can be made about electron affinity for this element group.",
+"None of the above",
+2,
+10);
+
+q1.askQuestion();
+q2.askQuestion();
+q3.askQuestion();
+q4.askQuestion();
+q5.askQuestion();
+q6.askQuestion();
+q7.askQuestion();
+q8.askQuestion();
+q9.askQuestion();
+q10.askQuestion();
+cout<<"Your Total score is"<<Total<<"Out of 100"<<endl;
+cout<<endl;
+if(Total=70)
+{
+cout<<"Great you passed the quiz"<<endl;
+cout<<endl;
+cout<<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<endl;
+cout<<"                                   "<<endl;
+cout<<"             CONGRATULATION        "<<endl;
+cout<<"                                   "<<endl;
+cout<<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<endl;
+}
+else
+cout<<"Sorry,you failed the quiz"<<endl;
+cout<<endl;
+cout<<"Better luck next time!"<<endl;
+}
+return 0;
+}
+void QuestionsetValues (string q,string a1,string a2,string a3,string a4,int ca,int pa)
+{
+    Question_Text=q;
+    Answer_1=a1;
+    Answer_2=a2;
+    Answer_3=a3;
+    Answer_4=a4;
+    Correct_Answer=ca;
+    Question_Score=pa;
+
+}
+void QuestionaskQuestion()
+{
+
+    cout<<endl;
+    cout<<"Question_Text"<<endl;
+    cout<<"1."<<Answer_1<<endl;
+    cout<<"2."<<Answer_2<<endl;
+    cout<<"3."<<Answer_3<<endl;
+    cout<<"4."<<Answer_4<<endl;
+    cout<<endl;
+    cout<<"What is your answer"<<endl;
+    cin>>Guess;
+    if(Guess==Correct_Answer)
+    {
+	cout<<endl;
+	cout<<"Great!You are correct"<<endl;
+	Total=Total+Question_Score;
+	cout<<"Score!"<<Question_Score<<"Out of"Question_Score<<"!"<<endl;
+	cout<<endl;
+
+    }
+    else
+	{cout<<endl;
+	cout<<"Oh No!You are wrong"<<endl;
+	cout<<"Score=0"<<Out of"<<Question_Score<<"!"<<endl;
+	cout<<"The correct answer is"<<Correct_Answer<<"."<<endl;
+	cout<<endl;
+	}
+}

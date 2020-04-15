@@ -1,0 +1,126 @@
+#include<stdio.h>
+#include <math.h>
+#include<iostream.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<graphics.h>
+#include<dos.h>
+
+
+void li()
+{
+
+	int gdriver = DETECT, gmode, err;
+	int i = 0, midx, midy;
+	int xrad[9], yrad[9], x[9][60], y[9][60];
+	int pos[9], electron[9], tmp;
+
+		/* request auto detection */
+
+	/* initialize graphic mode */
+	initgraph(&gdriver, &gmode, "C:/TURBOC3/BGI");
+	err = graphresult();
+
+	if (err != grOk)
+	{
+		/* error occurred */
+		printf("Graphics Error: %s",
+				grapherrormsg(err));
+
+	}
+
+
+	/* mid positions at x and y-axis */
+	midx =(getmaxx()/2)+200;
+	midy =(getmaxy()/2)-73;
+		outtextxy(midx-11,midy-2,"e=3");
+	outtextxy(midx-11,midy-10,"p=3");
+	outtextxy(midx-11,midy+6,"n=4");
+	/* manipulating radius of all electrons */
+	for (i = 0; i <1; i++) {
+		electron[i] =5;
+	}
+
+	/* offset position for the elements on their corresponding orbit */
+	for (i = 0; i < 9; i++) {
+		pos[i] = i * 6;
+	}
+
+	/* orbits for all orbits */
+	xrad[0] = 30, yrad[0] = 30;
+	for (i = 1; i < 2; i++) {
+		xrad[i] = xrad[i - 1] + 10;
+		yrad[i] = yrad[i - 1] + 10;
+	}
+
+	/* positions of electrons 																																		on their corresponding orbits */
+	for (i = 0; i < 9; i++)
+	{
+	electronmotion(xrad[i], yrad[i], midx, midy, x[i], y[i]);
+	}
+
+	  	fp=fopen("Lithium.exe","r");
+			
+	do
+		{
+		ch=fgetc(fp);
+		putchar(ch);
+		}
+		while(ch!=EOF);
+
+	    	while (!kbhit()) {
+
+
+		/* drawing 9 orbits */
+		setcolor(WHITE);
+		for (i = 0; i < 2; i++) {
+			ellipse(midx, midy, 0, 360, xrad[i], yrad[i]);
+		}
+
+
+		/* mercury in first orbit */
+		setcolor(RED);
+		setfillstyle(SOLID_FILL, RED);
+		pieslice(x[0][pos[0]], y[0][pos[0]], 0, 360, electron[0]);
+
+
+		delay(25);
+		setcolor(BLACK);
+		setfillstyle(SOLID_FILL, BLACK);
+		pieslice(x[0][pos[0]], y[0][pos[0]], 0, 360, electron[0]);
+
+
+			setcolor(RED);
+		setfillstyle(SOLID_FILL, RED);
+		pieslice(x[0][pos[3]], y[0][pos[3]], 0, 360, electron[0]);
+			delay(40);
+			setcolor(BLACK);
+		setfillstyle(SOLID_FILL, BLACK);
+		pieslice(x[0][pos[3]], y[0][pos[3]], 0, 360, electron[0]);
+
+
+		setcolor(RED);
+		setfillstyle(SOLID_FILL, RED);
+		pieslice(x[1][pos[7]], y[1][pos[7]], 0, 360, electron[0]);
+
+
+		delay(40);
+		setcolor(BLACK);
+		setfillstyle(SOLID_FILL, BLACK);
+		pieslice(x[1][pos[7]], y[1][pos[7]], 0, 360, electron[0]);
+
+
+
+		/* checking for one complete rotation */
+		for (i = 0; i < 9; i++) {
+			if (pos[i] <= 0) {
+				pos[i] = 59;
+			} else {
+				pos[i] = pos[i] - 1;
+			}
+		}
+
+
+	}
+
+ }

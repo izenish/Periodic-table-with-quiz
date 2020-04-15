@@ -1,0 +1,28 @@
+//lab 3.4 fixed point method
+
+#include<iostream.h>
+#include<conio.h>
+#include<math.h>
+
+#define f(x) x*x -5
+#define g(x) (5/x+x)/2
+#define e 0.00001
+
+void main()
+{
+clrscr();
+
+float x1,x0,f1,f0;
+
+cout<<"enter the initial guess\n";
+cin>>x0;
+
+do{
+x1=g(x0);
+f1=f(x1);
+x0=x1;
+f0=f1;
+} while(fabs(f1)>e);
+cout<<"root is"<<x0;
+getch();
+}

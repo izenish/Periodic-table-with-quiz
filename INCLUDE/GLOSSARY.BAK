@@ -1,0 +1,252 @@
+#include<stdio.h>
+#include<conio.h>
+#include<process.h>
+#include<graphics.h>
+#include<dos.h>
+//union REGS i,o;
+int gd=DETECT,gm;
+void mouse();
+//void back();
+void getpointer();
+void page();
+void hidemouse();
+void glossary();
+void detail();
+void coo(int,int,int);
+int re();
+void r();
+void r()
+{	hidemouse();
+	cleardevice();
+	re();
+	getpointer();
+
+}
+void glossary()
+{
+
+initgraph(&gm,&gd,"C:\\turboc3\\bgi");
+cleardevice();
+int choice,b;
+ printf("\n\n-------------***********************Glossary***********************-------------");
+ printf("\n\n     1.Periodic Table\t\t  2.Element\t\t    3.Atom ");
+ printf("\n\n     4.Symbol\t\t\t  5.Group\t\t    6.Period");
+ printf("\n\n     7.Valency\t\t\t  8.Oxidation State\t    9.Compound");
+ printf("\n\n     10.Noble Gases\t\t  11.Atomic Number\t    12.Atomic Weight");
+ printf("\n\n     13.Metal\t\t\t  14.Non-metal\t\t    15.Alkali Metal");
+ printf("\n\n     16.Alkaline Earth Metal\t  17.Transition Metal\t    18.Isotope");
+ printf("\n\n     19.Lanthanide\t\t  20.Actinides\t\t    21.Configuration");
+ printf("\n\n     22.Halogens\t\t  23.Valence Electron\t    24.Block");
+ setcolor(WHITE);
+
+rectangle(35,72,227,100);
+rectangle(35,105,227,133);
+rectangle(35,138,227,166);
+rectangle(35,171,227,199);
+rectangle(35,204,227,232);
+rectangle(35,237,227,265);
+rectangle(35,270,227,298);
+rectangle(35,303,227,331);
+
+rectangle(267,72,428,100);
+rectangle(267,105,428,133);
+rectangle(267,138,428,166);
+rectangle(267,171,428,199);
+rectangle(267,204,428,232);
+rectangle(267,237,428,265);
+rectangle(267,270,428,298);
+rectangle(267,303,428,331);
+
+rectangle(476,72,611,100);
+rectangle(476,105,611,133);
+rectangle(476,138,611,166);
+rectangle(476,171,611,199);
+rectangle(476,204,611,232);
+rectangle(476,237,611,265);
+rectangle(476,270,611,298);
+rectangle(476,303,611,331);
+}
+void detail() //element ma click garisake paxi read garna lai
+{
+       cleardevice();
+	glossary();
+       getpointer();
+       b=0;
+	coo(&b,&x,&y);
+while(!kbhit())
+ {
+	coo(&b,&x,&y);
+	if(b==1)
+	{                                                     //1
+	     if(x>=35 && y>=72 && x<=227 && y<=100)
+	   {
+
+		printf("\nPeroidic table is the tubular display of the chemical elements which are arranged by atomic number, electronic confifuration, and recurring chemical properties.It shows peroidic trends.");
+		     r();
+	}	
+ 	else if(x>=35 && y>=105 && x<=227 && y<=133)          //4
+	{
+		printf("\nSymbol is a notation of one or two letters representing a element.");
+		   r();
+	}
+ 	else if(x>=35 && y>=138 && x<=227 && y<=166)         //7
+	{
+		printf("\nValency of an element is a measure of its combining power with other atoms when it forms chemical compounds or molecules.");
+		   r();
+
+	}
+
+ 	else if(x>=35 && y>=171 && x<=227 && y<=199)        //10
+	{
+		printf("\nNoble gases is referred as a group of chemical elements with similar properties which are odorless, colorless and monoatomic gases with very low chemical reactivity under standard conditions.");
+		  r();
+		
+	}
+ 	else if(x>=35 && y>=204 && x<=227 && y<=232)        //13
+	{
+		printf("\nMetal is an element readily forms positive ions and has metallic bonds.");
+		r();
+	}
+	else if(x>=35 && y>=237 && x<=227 && y<=265)        //16
+	{
+		printf("\nAlkaline Earth Metal is any of the divalent strongly basic metal of group III of the periodic table.");
+		   r();
+	}
+	else if(x>=35 && y>=270 && x<=227 && y<=298)         //19
+	{
+		printf("\nLanthanide is any of the series of elements with increasing atomic numbers that begins with lanthanum or cerium and ends with lutetium.");
+		r();
+	}
+	else if(x>=35 && y>=303 && x<=227 && y<=331)          //22
+	{
+		printf("\nHalogen is one of a group of chemical element that includes chlorine, fluorine and iodine.");
+		r();
+	}
+ 	else if(x>=267 && y>=72 && x<=428 && y<=100)           //2
+	{	
+		printf("\nAn element is a substance whose atoms have the same number of protons. It cannot be broken down using chemical reactions.");
+		r();		
+
+		
+ 	}
+	else if(x>=267 && y>=105 && x<=428 && y<=133)		//5
+	{
+		printf("\nGroups is a column of element in the periodic table of the chemical elements.");
+		r();
+		
+	}
+ 	else if(x>=267 && y>=138 && x<=428 && y<=166)          //8
+	{
+		printf("\nOxidation state is the degree of loss of electrons of an atom in a chemical compounds.");
+		r();
+	}
+ 	else if(x>=267 && y>=171 && x<=428 && y<=199)                   //11
+	{
+		printf("\nAtomic Number is the number of protons found in the nucleus of an atom.");      //11
+		r();
+	}
+ 	else if(x>=267 && y>=204 && x<=428 && y<=232)                  //14
+	{
+		printf("\nNon-Metal is a chemical element that mostly lacks metallic attributes.");
+		r();
+
+	}
+ 	else if(x>=267 && y>=237 && x<=428 && y<=265)                  //17
+	{
+		printf("\nTransition metal is an element whose atom has a partially filled d sub-shell or which can give rise to cations with an incomplete d sub-shell.");
+		r();
+
+	}
+ 	else if(x>=267 && y>=270 && x<=428 && y<=298)                  //20
+	{
+		printf("\nActinide is any of the series of elements with increasing atomic numbers that begins with actinium or thorium and ends with lawrencium.");
+		r();
+
+	}
+ 	else if(x>=267 && y>=303 && x<=428 && y<=331)                    //23
+	{
+
+		 printf("\nValence electron is a single electron or more electrons in the outer shell of an atom that is responsible for the chemical properties of the atom.");
+		r();
+ 	}
+	else if(x>=476 && y>=72 && x<=611 && y<=100)                     //3
+	{
+		printf("\nAtoms are the basic units of matter and the defining structure of element. It is composed of protons, neutrons and electrons.");
+		r();
+
+	}
+ 	else if(x>=476 && y>=105 && x<=611 && y<=133)                       //6
+	{
+		printf("\nPeriod is a row of element in the periodic table of the chemical elements.");
+		r();
+	}
+	else if(x>=476 && y>=138 && x<=611 && y<=166)                       //9
+	{
+		printf("\nCompound is a substance formed when two or more different atoms are chemically bonded together.");
+		r();
+
+	}
+	else if(x>=476 && y>=171 && x<=611 && y<=199)                      //12
+	{
+
+		printf("\nAtomic weight is the average mass of atoms of an element, calculated using relative abundance of isotopes in a naturally occuring element.");
+		r();
+	}
+	else if(x>=476 && y>=204 && x<=611 && y<=232)                       //15
+	{
+		printf("\nAlkali Metal is a reactive chemical species which readily lose their one valence electron to form ionic compounds with non-metals.");
+		r();
+
+
+	}
+	else if(x>=476 && y>=237 && x<=611 && y<=265)                //18
+	{
+
+		printf("\nIsotope is a form of a chemical element whose atomic nucleus contains a specific number of neutron s, in addition to the number of proton s that uniquely defines the element.");
+		r();
+	}
+
+	else if(x>=476 && y>=270 && x<=611 && y<=298)                //21
+	{
+		printf("\nElectronic configuration refers to an arrangement or distribution of electrons in the orbitals of an atom.");
+		r();
+
+	}
+	else if(x>=476 && y>=303 && x<=611 && y<=331)                   //24
+	{
+
+		printf("\nBlock refers to a set of chemical elements predomminantly characterised by having their highest energy electrons in the same atomic orbital type.");
+		r();
+
+	}
+	 else if(x>=0 && y>=0 && x<=35 && y<=25)  //	back bottom click garepaxi page function ma call garxa
+	       {
+		hidemouse();
+		 cleardevice();
+		page();
+
+	       }
+}
+}
+}
+int re()
+{	
+	  outtextxy(4,10,"Back");
+	while(!kbhit())
+ {
+	coo(&b,&x,&y);
+	if(b==1)
+	{   
+		if(x>=0 && y>=0 && x<=35 && y<=25)  
+		
+	   {	
+			
+			hidemouse();
+			cleardevice();
+			detail();
+			cleardevice();
+	
+}
+}
+}
+return 0;

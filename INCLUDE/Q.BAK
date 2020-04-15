@@ -1,0 +1,1237 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+#include<dos.h>
+#include<stdlib.h>
+#define M 9
+
+int j=-1;
+int s,x,y,b;
+static int n=0;
+void sounds();
+void ran();
+void two2();
+void three3();
+void four4();
+void five5();
+void six6();
+void seven7();
+void eight8();
+void nine9();
+void ten10();
+//void eleven11();
+//void twelve12();
+void menu();
+
+void f2(int x1,int y1,int x2,int y2,int c)
+{
+setfillstyle(SOLID_FILL,c);
+rectangle(x1,y1,x2,y2);
+floodfill(x1+1,y1+5,WHITE);
+
+
+}
+
+struct player
+{
+	char name[20];
+	int score;
+}p;
+
+
+void righta()
+{
+hidemouse();
+/*setfillstyle(SOLID_FILL,GREEN);
+rectangle(100,221,250,251);
+floodfill(101,222,WHITE); */
+f2(100,221,250,251,2);
+mouse();
+sounds();
+//j++;
+//printf("%d",j);
+ran();
+
+}
+void rightb()
+{
+hidemouse();
+setfillstyle(SOLID_FILL,GREEN);
+rectangle(390,221,540,251);
+floodfill(391,222,WHITE);
+mouse();
+sounds();
+//j++;
+//printf("d",j);
+ran();
+
+}
+void rightc()
+{
+hidemouse();
+setfillstyle(SOLID_FILL,GREEN);
+rectangle(100,291,250,321);
+floodfill(101,292,WHITE);
+mouse();
+sounds();
+//j++;
+//printf("%d",j);
+ran();
+}
+void rightd()
+{
+hidemouse();
+setfillstyle(SOLID_FILL,GREEN);
+rectangle(390,291,540,321);
+floodfill(391,292,WHITE);
+mouse();
+sounds();
+//j++;
+//printf("%d",j);
+ran();
+}
+void wronga()
+{
+hidemouse();
+setfillstyle(SOLID_FILL,RED);
+rectangle(100,221,250,251);
+floodfill(101,222,WHITE);
+mouse();
+}
+void wrongb()
+{
+hidemouse();
+setfillstyle(SOLID_FILL,RED);
+rectangle(390,221,540,251);
+floodfill(391,222,WHITE);
+mouse();
+}
+void wrongc()
+{
+hidemouse();
+setfillstyle(SOLID_FILL,RED);
+rectangle(100,291,250,321);
+floodfill(101,292,WHITE);
+mouse();
+}
+
+void wrongd()
+{
+hidemouse();
+setfillstyle(SOLID_FILL,RED);
+rectangle(390,291,540,321);
+floodfill(391,292,WHITE);
+mouse();
+}
+void bgdcolor()
+{
+//setbkcolor(BLACK);
+settextstyle(TRIPLEX_SCR_FONT,HORIZ_DIR,6);
+outtextxy(240,50,"QUIZ");
+settextstyle(DEFAULT_FONT,HORIZ_DIR,1);
+
+setfillstyle(SOLID_FILL,BLUE);
+rectangle(20,130,630,350);
+floodfill(21,132,WHITE);
+}
+void gameover1()  // for game over
+{
+cleardevice();
+delay(300);
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,3);
+outtextxy(250,230,"GAME OVER!!");
+settextstyle(DEFAULT_FONT,HORIZ_DIR,1);
+outtextxy(260,260,"YOUR POINT IS ");
+gotoxy(40,18);
+printf("%d",n);
+
+}
+
+void display_point()  // for printing your point in rectangle
+{
+rectangle(490,350,630,380);
+outtextxy(500,360,"Your points:");
+}
+
+void count_point()
+{
+gotoxy(77,23);
+printf("%d",n);
+}
+
+void sounds()
+{
+ for(int a=200;a<1000;a=a+70)
+	       {
+	       sound(a);
+	       delay(10);
+	       }
+	       nosound();
+}
+
+void one()               // for 1st question
+{
+clrscr();
+cleardevice();
+bgdcolor();
+outtextxy(28,191,"The atomic number of an atom is the number of_______ in the atom's nucleus.");
+outtextxy(80,230,"a)");
+rectangle(100,221,250,251);
+outtextxy(140,233,"Nucleus");
+
+outtextxy(370,230,"b)");
+rectangle(390,221,540,251);
+outtextxy(430,233,"Electrons");
+
+outtextxy(80,300,"c)");
+rectangle(100,291,250,321);
+outtextxy(140,303,"Protons");
+
+outtextxy(370,300,"d)");
+rectangle(390,291,540,321);
+outtextxy(405,303,"Valence Electron");
+}
+
+void one1()        //for 1st question answer
+{        one();
+display_point();
+count_point();
+while(!kbhit())
+{
+	coo(&b,&x,&y);
+
+	if(b==1)
+	{
+	  if(x>=100 && y>=291 && x<=250 && y<=391)
+	   {
+	      n=n+1;
+	       rightc();
+	       count_point();
+	       setcolor(WHITE);
+	   }
+	   else if(x>=100 && y>=221 && x<=250 && y<=251)
+	   {
+
+
+	   wronga();
+	   delay(300);
+
+
+	   gameover1();
+
+	   }
+	  else if(x>=390 && y>=221 && x<=540 && y<=251)
+	  {
+	    wrongb();
+	    delay(300);
+
+
+	    gameover1();
+
+	  }
+	  else if (x>=390 && y>=291 && x<=540 && y<=321)
+	 {
+	   wrongd();
+	   delay(300);
+
+
+	   gameover1();
+
+	  }
+
+
+	 }
+	  getpointer();
+
+}
+}
+void two()   // for 2nd question
+{
+clrscr();
+cleardevice();
+bgdcolor();
+outtextxy(28,191,"Which is more reactive Potassium or Krypton");
+outtextxy(80,230,"a)");
+rectangle(100,221,250,251);
+outtextxy(140,233,"Potassium");
+
+outtextxy(370,230,"b)");
+rectangle(390,221,540,251);
+outtextxy(430,233,"Krypton");
+
+outtextxy(80,300,"c)");
+rectangle(100,291,250,321);
+outtextxy(155,303,"Both");
+
+outtextxy(370,300,"d)");
+rectangle(390,291,540,321);
+outtextxy(425,303,"Neither");
+}
+void two2()        //for 2nd question answer
+{
+two();
+display_point();
+count_point();
+while(!kbhit())
+{
+	coo(&b,&x,&y);
+
+	if(b==1)
+	{
+	  if(x>=100 && y>=221 && x<=250 && y<=251)
+	   {  //cleardevice();
+	   n=n+1;
+
+	      // gotoxy(77,23);
+	       //printf("%d",2);
+	       righta();
+	      // sounds();
+	       //delay(500);
+		count_point();
+
+	       setcolor(WHITE);
+
+	   }
+	   else if(x>=390 && y>=221 && x<=540 && y<=251)
+	   {
+
+	   wrongb();
+	   delay(300);
+	   gameover1();
+
+	   }
+	  else if(x>=100 && y>=291 && x<=250 && y<=321)
+	  {
+	    wrongc();
+	    delay(300);
+	    gameover1();
+
+	  }
+	  else if (x>=390 && y>=291 && x<=540 && y<=321)
+	 {
+	   wrongd();
+	   delay(300);
+	   gameover1();
+
+	  }
+
+
+	 }
+	  getpointer();
+
+}
+}
+void three()   // for 3rd question
+{
+clrscr();
+cleardevice();
+bgdcolor();
+outtextxy(28,191,"Which of the following is not a physical property?");
+outtextxy(80,230,"a)");
+rectangle(100,221,250,251);
+outtextxy(140,233,"Luster");
+
+outtextxy(370,230,"b)");
+rectangle(390,221,540,251);
+outtextxy(430,233,"Corrosion");
+
+outtextxy(80,300,"c)");
+rectangle(100,291,250,321);
+outtextxy(130,303,"Malleability");
+
+outtextxy(370,300,"d)");
+rectangle(390,291,540,321);
+outtextxy(435,303,"Ductile");
+
+}
+void three3()        //for 3rd question answer
+{
+three();
+display_point();
+count_point();
+while(!kbhit())
+{
+	coo(&b,&x,&y);
+
+	if(b==1)
+	{
+	  if(x>=390 && y>=221 && x<=540 && y<=251)
+	   {      n=n+1;
+	       //gotoxy(77,23);
+	       //printf("%d",3);
+	       rightb();
+	      // sounds();
+	       //delay(500);
+
+		count_point();
+	       setcolor(WHITE);
+
+	   }
+	   else if(x>=100 && y>=221 && x<=250 && y<=251)
+	   {
+
+	   wronga();
+	   gameover1();
+
+	   }
+	  else if(x>=100 && y>=291 && x<=250 && y<=321)
+	  {
+	    wrongc();
+	    gameover1();
+
+	  }
+	  else if (x>=390 && y>=291 && x<=540 && y<=321)
+	 {
+	   wrongd();
+	   gameover1();
+
+	  }
+
+
+	 }
+	  getpointer();
+
+}
+}
+ void four()    //for 4th question
+ {
+ clrscr();
+ cleardevice();
+ bgdcolor();
+outtextxy(28,191,"In periodic table,helium is placed at_______");
+outtextxy(80,230,"a)");
+rectangle(100,221,250,251);
+outtextxy(117,233,"top left corner");
+
+outtextxy(370,230,"b)");
+rectangle(390,221,540,251);
+outtextxy(390,233,"bottom right corner");
+
+outtextxy(80,300,"c)");
+rectangle(100,291,250,321);
+outtextxy(115,303,"bottom left corner");
+
+outtextxy(370,300,"d)");
+rectangle(390,291,540,321);
+outtextxy(405,303,"top right corner");
+}
+
+void four4()        //for 4th question answer
+{
+four();
+display_point();
+count_point();
+while(!kbhit())
+{
+	coo(&b,&x,&y);
+
+	if(b==1)
+	{
+	  if(x>=390 && y>=291 && x<=540 && y<=321)
+	   {  n=n+1;
+	       //gotoxy(77,23);
+	       //printf("%d",4);
+	       rightd();
+	      // sounds();
+	       //delay(500);
+	       count_point();
+
+	       setcolor(WHITE);
+
+	   }
+	   else if(x>=100 && y>=221 && x<=250 && y<=251)
+	   {
+
+	   wronga();
+	   gameover1();
+
+	   }
+	  else if(x>=100 && y>=291 && x<=250 && y<=321)
+	  {
+	    wrongc();
+	    gameover1();
+
+	  }
+	  else if (x>=390 && y>=221 && x<=540 && y<=251)
+	 {
+	   wrongb();
+	   gameover1();
+
+	  }
+
+
+	 }
+	  getpointer();
+
+}
+}
+void five()   // for 4th question
+{
+clrscr();
+cleardevice();
+bgdcolor();
+outtextxy(28,191,"Nobel gases are present in?");
+outtextxy(80,230,"a)");
+rectangle(100,221,250,251);
+outtextxy(140,233,"VIIA group");
+
+outtextxy(370,230,"b)");
+rectangle(390,221,540,251);
+outtextxy(430,233,"VIA group");
+
+outtextxy(80,300,"c)");
+rectangle(100,291,250,321);
+outtextxy(140,303,"VA group");
+
+outtextxy(370,300,"d)");
+rectangle(390,291,540,321);
+outtextxy(405,303,"VIIIA group");
+
+}
+void five5()        //for fifth question answer
+{
+five();
+display_point();
+count_point();
+while(!kbhit())
+{
+	coo(&b,&x,&y);
+
+	if(b==1)
+	{
+	  if(x>=390 && y>=291 && x<=540 && y<=321)
+	   {      n=n+1;
+	       //gotoxy(77,23);
+	       //printf("%d",5);
+	       rightd();
+	       //sounds();
+	       //delay(500);
+
+	       count_point();
+
+	       setcolor(WHITE);
+
+	   }
+	   else if(x>=100 && y>=221 && x<=250 && y<=251)
+	   {
+
+	   wronga();
+	   gameover1();
+
+	   }
+	  else if(x>=100 && y>=291 && x<=250 && y<=321)
+	  {
+	    wrongc();
+	    gameover1();
+
+	  }
+	  else if (x>=390 && y>=221 && x<=540 && y<=251)
+	 {
+	   wrongb();
+	   gameover1();
+
+	  }
+
+
+	 }
+	  getpointer();
+
+}
+}
+
+void six()   // for 6th question
+{
+clrscr();
+cleardevice();
+bgdcolor();
+outtextxy(28,191,"Energy required to remove and electron from outer");
+outtextxy(80,230,"a)");
+rectangle(100,221,250,251);
+outtextxy(115,233,"Potential energy");
+
+outtextxy(370,230,"b)");
+rectangle(390,221,540,251);
+outtextxy(410,233,"KInetic energy");
+
+outtextxy(80,300,"c)");
+rectangle(100,291,250,321);
+outtextxy(110,303,"Mechanical energy");
+
+outtextxy(370,300,"d)");
+rectangle(390,291,540,321);
+outtextxy(395,303,"Ionization energy");
+
+}
+void six6()        //for sixth question answer
+{
+six();
+display_point();
+count_point();
+while(!kbhit())
+{
+	coo(&b,&x,&y);
+
+	if(b==1)
+	{
+	  if(x>=390 && y>=291 && x<=540 && y<=321)
+	   {      n=n+1;
+	       //gotoxy(77,23);
+	      // printf("%d",6);
+	       rightd();
+	      // sounds();
+	       //delay(500);
+	       count_point();
+
+
+
+	       setcolor(WHITE);
+
+	   }
+	   else if(x>=100 && y>=221 && x<=250 && y<=251)
+	   {
+
+	   wronga();
+	   gameover1();
+
+	   }
+	  else if(x>=100 && y>=291 && x<=250 && y<=321)
+	  {
+	    wrongc();
+	    gameover1();
+
+	  }
+	  else if (x>=390 && y>=221 && x<=540 && y<=251)
+	 {
+	   wrongb();
+	   gameover1();
+
+	  }
+
+
+	 }
+	  getpointer();
+
+}
+}
+void seven()               // for 7th question
+{
+clrscr();
+cleardevice();
+bgdcolor();
+
+outtextxy(28,191,"Inner transistion elements  are called");
+outtextxy(80,230,"a)");
+rectangle(100,221,250,251);
+outtextxy(140,233,"Lanthanides");
+
+outtextxy(370,230,"b)");
+rectangle(390,221,540,251);
+outtextxy(430,233,"Actinides");
+
+outtextxy(80,300,"c)");
+rectangle(100,291,250,321);
+outtextxy(102,303,"Rare earth metals");
+
+outtextxy(370,300,"d)");
+rectangle(390,291,540,321);
+outtextxy(425,303,"All");
+}
+
+void seven7()        //for seven question answer
+{        seven();
+display_point();
+count_point();
+while(!kbhit())
+{
+	coo(&b,&x,&y);
+
+	if(b==1)
+	{
+	  if(x>=390 && y>=291 && x<=540 && y<=321)
+	   {  //cleardevice();
+
+	       n=n+1;
+	       //gotoxy(77,23);
+	       //printf("%d",7);
+	       rightd();
+	      // sounds();
+	       //delay(500);
+	       count_point();
+	       setcolor(WHITE);
+
+	   }
+	   else if(x>=100 && y>=221 && x<=250 && y<=251)
+	   {
+
+
+	   wronga();
+	   delay(300);
+
+
+	   gameover1();
+	   }
+	  else if(x>=390 && y>=221 && x<=540 && y<=251)
+	  {
+	    wrongb();
+	    delay(300);
+
+
+	    gameover1();
+	  }
+	  else if (x>=100 && y>=291 && x<=250 && y<=321)
+	 {
+	   wrongc();
+	   delay(300);
+
+
+	   gameover1();
+	  }
+
+
+	 }
+	  getpointer();
+
+}
+}
+
+void eight()   // for 8th question
+{
+clrscr();
+cleardevice();
+bgdcolor();
+outtextxy(28,191,"Average distance between nucleus and outer shell is");
+outtextxy(80,230,"a)");
+rectangle(100,221,250,251);
+outtextxy(130,233,"Atomic size");
+
+outtextxy(370,230,"b)");
+rectangle(390,221,540,251);
+outtextxy(425,233,"Nulear size");
+
+outtextxy(80,300,"c)");
+rectangle(100,291,250,321);
+outtextxy(115,303,"shielding effect");
+
+outtextxy(370,300,"d)");
+rectangle(390,291,540,321);
+outtextxy(410,303,"None of above");
+
+}
+void eight8()        //for 8th question answer
+{
+eight();
+display_point();
+count_point();
+while(!kbhit())
+{
+	coo(&b,&x,&y);
+
+	if(b==1)
+	{
+	  if(x>=390 && y>=221 && x<=540 && y<=251)
+	   {      n=n+1;
+	      // gotoxy(77,23);
+	      // printf("%d",3);
+	       rightb();
+	       //sounds();
+	       //delay(500);
+
+	       count_point();
+	       setcolor(WHITE);
+
+	   }
+	   else if(x>=100 && y>=221 && x<=250 && y<=251)
+	   {
+
+	   wronga();
+	   gameover1();
+
+	   }
+	  else if(x>=100 && y>=291 && x<=250 && y<=321)
+	  {
+	    wrongc();
+	    gameover1();
+
+	  }
+	  else if (x>=390 && y>=291 && x<=540 && y<=321)
+	 {
+	   wrongd();
+	   gameover1();
+
+	  }
+
+
+	 }
+	  getpointer();
+
+}
+}
+void nine()   // for 9th question
+{
+clrscr();
+cleardevice();
+bgdcolor();
+outtextxy(28,191,"Horizontal rows of periodic table are called");
+outtextxy(80,230,"a)");
+rectangle(100,221,250,251);
+outtextxy(140,233,"rows");
+
+outtextxy(370,230,"b)");
+rectangle(390,221,540,251);
+outtextxy(430,233,"periods");
+
+outtextxy(80,300,"c)");
+rectangle(100,291,250,321);
+outtextxy(130,303,"coloumns");
+
+outtextxy(370,300,"d)");
+rectangle(390,291,540,321);
+outtextxy(395,303,"None of above");
+
+}
+void nine9()        //for 9th question answer
+{
+nine();
+display_point();
+count_point();
+while(!kbhit())
+{
+	coo(&b,&x,&y);
+
+	if(b==1)
+	{
+	  if(x>=390 && y>=221 && x<=540 && y<=251)
+	   {      n=n+1;
+	       //gotoxy(77,23);
+	       //printf("%d",9);
+	       rightb();
+	       count_point();
+	       //sounds();
+	       //delay(500);
+	       //ten10();
+
+
+	       setcolor(WHITE);
+
+	   }
+	   else if(x>=100 && y>=221 && x<=250 && y<=251)
+	   {
+
+	   wronga();
+	   gameover1();
+
+	   }
+	  else if(x>=100 && y>=291 && x<=250 && y<=321)
+	  {
+	    wrongc();
+	    gameover1();
+
+	  }
+	  else if (x>=390 && y>=291 && x<=540 && y<=321)
+	 {
+	   wrongd();
+	   gameover1();
+
+	  }
+
+
+	 }
+	  getpointer();
+
+}
+}
+void ten()   // for 10th question
+{
+clrscr();
+cleardevice();
+bgdcolor();
+outtextxy(28,191,"Which of the following cannot exist in solution ");
+outtextxy(80,230,"a)");
+rectangle(100,221,250,251);
+outtextxy(140,233,"O-2");
+
+outtextxy(370,230,"b)");
+rectangle(390,221,540,251);
+outtextxy(455,233,"H+");
+
+outtextxy(80,300,"c)");
+rectangle(100,291,250,321);
+outtextxy(150,303,"Cl-");
+
+outtextxy(370,300,"d)");
+rectangle(390,291,540,321);
+outtextxy(450,303,"Na+");
+
+}
+void ten10()        //for 10th question answer
+{
+ten();
+display_point();
+count_point();
+while(!kbhit())
+{
+	coo(&b,&x,&y);
+
+	if(b==1)
+	{
+	  if(x>=100 && y>=221 && x<=250 && y<=251)
+	   {      n=n+1;
+	       //gotoxy(77,23);
+	       //printf("%d",10);
+	       righta();
+	       count_point();
+	       //delay(500);
+	       //sounds();
+	       //ten10();
+
+
+	       setcolor(WHITE);
+
+	   }
+	   else if(x>=390 && y>=221 && x<=540 && y<=251)
+	   {
+
+	   wrongb();
+	   gameover1();
+
+	   }
+	  else if(x>=100 && y>=291 && x<=250 && y<=321)
+	  {
+	    wrongc();
+	    gameover1();
+
+	  }
+	  else if (x>=390 && y>=291 && x<=540 && y<=321)
+	 {
+	   wrongd();
+	   gameover1();
+
+	  }
+
+
+	 }
+	  getpointer();
+
+}
+} /*
+void eleven()   // for 11th question
+{
+clrscr();
+cleardevice();
+bgdcolor();
+outtextxy(28,191,"which one is known as the father of periodic table? ");
+outtextxy(80,230,"a)");
+rectangle(100,221,250,251);
+outtextxy(140,233,"Mendeleev");
+
+outtextxy(370,230,"b)");
+rectangle(390,221,540,251);
+outtextxy(455,233,"Lavoisier");
+
+outtextxy(80,300,"c)");
+rectangle(100,291,250,321);
+outtextxy(150,303,"Neil Bohr");
+
+outtextxy(370,300,"d)");
+rectangle(390,291,540,321);
+outtextxy(450,303,"Rutherford");
+
+}
+void eleven11()        //for 11th question answer
+{
+eleven();
+display_point();
+count_point();
+while(!kbhit())
+{
+	coo(&b,&x,&y);
+
+	if(b==1)
+	{
+	  if(x>=100 && y>=221 && x<=250 && y<=251)
+	   {      n=n+1;
+	       //gotoxy(77,23);
+	       //printf("%d",10);
+	       righta();
+	       //delay(500);
+	       sounds();
+	       //ten10();
+
+
+	       setcolor(WHITE);
+
+	   }
+	   else if(x>=390 && y>=221 && x<=540 && y<=251)
+	   {
+
+	   wrongb();
+	   delay(300);
+	   gameover1();
+
+	   }
+	  else if(x>=100 && y>=291 && x<=250 && y<=321)
+	  {
+	    wrongc();
+	    delay(300);
+	    gameover1();
+
+	  }
+	  else if (x>=390 && y>=291 && x<=540 && y<=321)
+	 {
+	   wrongd();
+	   delay(300);
+	   gameover1();
+
+	  }
+
+
+	 }
+	  getpointer();
+
+}
+}/*
+void twelve()   // for 12th question
+{
+clrscr();
+cleardevice();
+bgdcolor();
+outtextxy(28,191,"Which of the following is the abbreviation of element Gold? ");
+outtextxy(80,230,"a)");
+rectangle(100,221,250,251);
+outtextxy(140,233,"G");
+
+outtextxy(370,230,"b)");
+rectangle(390,221,540,251);
+outtextxy(455,233,"Fe");
+
+outtextxy(80,300,"c)");
+rectangle(100,291,250,321);
+outtextxy(150,303,"Au");
+
+outtextxy(370,300,"d)");
+rectangle(390,291,540,321);
+outtextxy(450,303,"Go");
+
+}
+void twelve12()        //for 12th question answer
+{
+twelve();
+display_point();
+count_point();
+while(!kbhit())
+{
+	coo(&b,&x,&y);
+
+	if(b==1)
+	{
+	  if(x>=100 && y>=291 && x<=250 && y<=321)
+	   {      n=n+1;
+	       //gotoxy(77,23);
+	       //printf("%d",10);
+	       rightc();
+	       //delay(500);
+	       sounds();
+	       //ten10();
+
+
+	       setcolor(WHITE);
+
+	   }
+	   else if(x>=390 && y>=221 && x<=540 && y<=251)
+	   {
+
+	   wrongb();
+	   delay(300);
+	   gameover1();
+
+	   }
+	  else if(x>=100 && y>=221 && x<=250 && y<=251)
+	  {
+
+	    wronga();
+	    delay(300);
+	    gameover1();
+
+	  }
+	  else if (x>=390 && y>=291 && x<=540 && y<=321)
+	 {
+	   wrongd();
+	   delay(300);
+	   gameover1();
+
+	  }
+
+
+	 }
+	  getpointer();
+
+}
+}
+*/
+
+ int a[M];
+void create()
+{
+ int X,n;
+ int c;
+ int i=0;
+
+
+ srand(time(NULL));
+
+ for(c=0;c<10;c++)
+ {
+  a[c]=(rand()%(M+1));
+
+ }
+
+ while(i<10)
+ {
+  int r=(rand()%(M+1));
+  for(X=0;X<i;X++)
+  {
+   if(a[X]==r)
+   {
+    break;
+   }
+  }
+   if(X==i)
+   {
+   a[i++]=r;
+  // i= i + 1;
+
+ }
+  }
+/*for(n=0;n<10;n++)
+ {
+  printf("a[%d]is %d\n",n,a[n]);
+ }
+
+ printf("\n\n");    */
+ //int ans;
+//int j=0;
+}
+
+
+
+void ran()
+{   //int j=0;
+//int gd=DETECT,gm,b,x,y;
+//initgraph(&gd,&gm,"C:\\Turboc3\\BGI");
+
+//cleardevice();
+//j++;
+
+if(++j<10)
+{
+switch(a[j])
+ {
+ case 0:
+ one1();
+ break;
+
+ case 1:
+ two2();
+  break;
+
+case 2:
+three3();
+break;
+
+case 3:
+four4();
+break;
+case 4:
+five5();
+break;
+case 5:
+six6();
+break;
+case 6:
+seven7();
+break;
+case 7:
+eight8();
+break;
+case 8:
+nine9();
+break;
+case 9:
+ten10();
+break;
+/*case 10:
+eleven11();
+break;
+/*case 11:
+twelve12();*/
+  default:
+  printf("game over");
+}
+}
+
+}
+void menu()
+{          int pr=0;
+//cleardevice();
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,5);
+//gotoxy(50,30);
+outtextxy(220,100,"MENU");
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,3);
+//rectangle(180,160,240,200);
+outtextxy(185,160,"Start");
+//rectangle(180,200,305,240);
+outtextxy(185,200,"Scoreboard");
+while(!kbhit())
+{
+
+	coo(&b,&x,&y);
+
+	if(b==1)
+	{
+	  if(x>=180 && y>=160 && x<=240 && y<=200) // for starting game
+	 {   cleardevice();
+	   fp=fopen("C://TURBOC3//score.txt","ap");
+
+	 //outtextxy(10,30,"enter your name");
+	   printf("Enter Your name : ");
+
+	   scanf("%s",&p.name);
+
+	  hidemouse();
+	  delay(100);
+	  cleardevice();
+	  //mouse();
+	  create();
+	  ran();
+	  p.score=n;
+	  fwrite(&p,sizeof(p),1,fp);
+	 fclose(fp);
+
+	 }
+	 else if(x>=180 && y>=200  && x<=305 && y<=240)
+	 {  hidemouse();
+	 clrscr();
+
+	 //outtextxy(10,20,"Name");
+	 //outtextxy(30,40,"Score");
+	   fp=fopen("C://TURBOC3//score.txt","rb");
+	   cleardevice();
+	   fread(&p,sizeof(p),1,fp);
+	   while(!feof(fp))
+	     {      printf("\nName : %s\t",p.name);
+
+	       printf("score : %d\n",p.score);
+	       fread(&p,sizeof(p),1,fp);
+	       if(p.score>=pr)
+	    { pr=p.score;
+	       }
+	     }
+	  fclose(fp);
+
+	 }
+
+	  getpointer();
+	  }
+
+    }
+}

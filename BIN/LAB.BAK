@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <iostream.h>
+#include <conio.h>
+#define m 5
+int f=-1,r=-1,d,x,q[m];
+void main()
+{
+do{
+cout<<"1)Enqueue\n2)Dequeue\n3)Display";
+cout<<"Enter your choice";
+cin>>x;
+switch(x)
+{
+case 1:
+{if(f==-1)
+f=0;
+if(r>m-1)
+cout<<"Overflow";
+else
+{cout<<"enter the data u want to store";
+ cin>>d;
+ r=r+1;
+ q[r]=d;
+ }
+ break;}
+ case 2:
+ {if(f>r)
+ cout<<"Queue is empty";
+ else
+ {d=q[f];
+ printf("%d is deleted",d);
+
+ f=f+1;
+ }
+ break; }
+ default:
+ cout<<"invalid";
+ }
+printf("press 1 to continue");
+ cin>>d;
+ }
+ while(d==1);
+ }

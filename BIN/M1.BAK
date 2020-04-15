@@ -1,0 +1,12 @@
+#include<chrono.h>
+#include<thread.h>
+#include<iostream.h>
+int main()
+{
+std::chrono::seconds interval(10);
+for(int i=0;i<10;i++)
+{
+std::cout<<"tick!\n"<<std::flush;
+std::this_thread::sleep_for(interval);
+}
+}
